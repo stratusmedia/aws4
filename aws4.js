@@ -1,7 +1,7 @@
 var aws4 = exports,
     url = require('url'),
     querystring = require('querystring'),
-    crypto = require('crypto'),
+    crypto = require('aws4-crypto'),
     lru = require('./lru'),
     credentialsCache = lru(1000)
 
@@ -280,7 +280,7 @@ RequestSigner.prototype.credentialString = function() {
 }
 
 RequestSigner.prototype.defaultCredentials = function() {
-  var env = process.env
+  var env = {};
   return {
     accessKeyId: env.AWS_ACCESS_KEY_ID || env.AWS_ACCESS_KEY,
     secretAccessKey: env.AWS_SECRET_ACCESS_KEY || env.AWS_SECRET_KEY,
